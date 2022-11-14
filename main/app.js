@@ -10,7 +10,7 @@ function addTokens(input, tokens) {
     throw new Error("Input should have at least 6 characters");
 
   for (const e of tokens) {
-    if (!("tokenName" in e) || typeof e.tokenName !== "string")
+    if (!("tokenName" in e) || !isString(e.tokenName))
       throw new Error("Invalid array format");
   }
 
