@@ -12,10 +12,14 @@ function addTokens(input, tokens) {
   for (const e of tokens) {
     if (!("tokenName" in e) || typeof e.tokenName !== "string")
       throw new Error("Invalid array format");
-    else {
-      input = input.replace("...", "${" + e.tokenName + "}");
-    }
   }
+
+  if (!input.includes("...")) return input;
+
+  for (const e of tokens) {
+    input = input.replace("...", "${" + e.tokenName + "}");
+  }
+
   return input;
 }
 
